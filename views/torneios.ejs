@@ -1,0 +1,16 @@
+<%- include('partials/head')%>
+
+    <%- include('partials/navbar')%>
+        <div class="container">
+            <h1>Torneios de futebol do Piracaia FC</h1>
+
+            <ul>
+                <% for(torneio of torneios) { %>
+                    <li><a href="/torneios/<%= torneio.id %>/tabela">
+                            <%= torneio.nome %>
+                        </a></li>
+                    <% } %>
+            </ul>
+        </div>
+
+        <%- include('partials/footer')%>
