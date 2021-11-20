@@ -28,21 +28,35 @@
                     </tr>
                 </thead>
 
-                <% for (time of torneio.times) { %>
+                <% for (time of times) { %>
 
                     <tr>
                         <th>Pos</th>
                         <th>
-                            <%= time %>
+                            <%= time.nome %>
                         </th>
 
-                        <th>Pontos</th>
-                        <th>Jogos</th>
-                        <th>Vitórias</th>
-                        <th>Empates</th>
-                        <th>Derrotas</th>
-                        <th>Gols</th>
-                        <th>Gols 12</th>
+                        <th>
+                            <%= time.pontos %>
+                        </th>
+                        <th>
+                            <%= time.jogos %>
+                        </th>
+                        <th>
+                            <%= time.vitorias %>
+                        </th>
+                        <th>
+                            <%= time.empates %>
+                        </th>
+                        <th>
+                            <%= time.derrotas %>
+                        </th>
+                        <th>
+                            <%= time.gols %>
+                        </th>
+                        <th>
+                            <%= time.gols %>
+                        </th>
                     </tr>
                     <% } %>
 

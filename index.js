@@ -35,6 +35,64 @@ const torneios = [
 
 ];
 
+const times = [
+    {
+        nome: 'Lyon',
+        torneio: 2,
+        pontos: 0,
+        jogos: 0,
+        vitorias: 0,
+        empates: 0,
+        derrotas: 0,
+        gols: 0,
+        gols12: 0
+    },
+    {
+        nome: 'Borussia',
+        torneio: 2,
+        pontos: 0,
+        jogos: 0,
+        vitorias: 0,
+        empates: 0,
+        derrotas: 0,
+        gols: 0,
+        gols12: 0
+    },
+    {
+        nome: 'Atletico de Madrid',
+        torneio: 2,
+        pontos: 0,
+        jogos: 0,
+        vitorias: 0,
+        empates: 0,
+        derrotas: 0,
+        gols: 0,
+        gols12: 0
+    },
+    {
+        nome: 'Liverpool',
+        torneio: 2,
+        pontos: 0,
+        jogos: 0,
+        vitorias: 0,
+        empates: 0,
+        derrotas: 0,
+        gols: 0,
+        gols12: 0
+    },
+    {
+        nome: 'Milan',
+        torneio: 2,
+        pontos: 0,
+        jogos: 0,
+        vitorias: 0,
+        empates: 0,
+        derrotas: 0,
+        gols: 0,
+        gols12: 0
+    },
+];
+
 app.get('/torneios', (req, res) => {
     res.render('torneios', { torneios });
 })
@@ -42,7 +100,7 @@ app.get('/torneios', (req, res) => {
 app.get('/torneios/:id/tabela', (req, res) => {
     const { id } = req.params;
     const torneio = torneios.find(c => c.id === parseInt(id));
-    res.render('tabela', { torneio });
+    res.render('tabela', { torneio, times });
 })
 
 app.listen(3000, () => {
