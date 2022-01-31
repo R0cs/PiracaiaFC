@@ -1,0 +1,81 @@
+<% layout('/layouts/boilerplate') %>
+
+    <main class="container py-3">
+        <div class="col-6 offset-3">
+            <form action="/torneios/novoClube/<%= torneio.id %>" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" type="text" id="nome" name="clubes[nome]" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="escudo">Escudo</label>
+                    <input class="form-control" type="text" id="escudo" name="clubes[escudo]" required>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="jogos">Jogos</label>
+                        <input class="form-control" type="number" id="jogos" name="clubes[jogos]" required value=0>
+                    </div>
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="pontos">Pontos</label>
+                        <input class="form-control" type="number" id="pontos" name="clubes[pontos]" required value=0>
+                    </div>
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="vitorias">Vitórias</label>
+                        <input class="form-control" type="number" id="vitorias" name="clubes[vitorias]" required
+                            value=0>
+                    </div>
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="empates">Empates</label>
+                        <input class="form-control" type="number" id="empates" name="clubes[empates]" required value=0>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="derrotas">Derrotas</label>
+                        <input class="form-control" type="number" id="derrotas" name="clubes[derrotas]" required
+                            value=0>
+                    </div>
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="gols">Gols</label>
+                        <input class="form-control" type="number" id="gols" name="clubes[gols]" required value=0>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label" for="gols12">Gols do Décimo Segundo</label>
+                        <input class="form-control" type="number" id="gols12" name="clubes[gols12]" required value=0>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="jogadores">jogadores</label>
+                    <textarea class="form-control" type="text" id="jogadores" name="clubes[jogadores]"
+                        required></textarea>
+                </div>
+                <button class="btn btn-success ">Salvar</button>
+            </form>
+            <a class="btn btn-danger mt-2" href="/torneios/<%= torneio.id %>">Cancelar</a>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validated-form')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>

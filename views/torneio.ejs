@@ -1,0 +1,109 @@
+<% layout('/layouts/boilerplate') %>
+    <main class="container py-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex bd-highlight">
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                        <h2>
+                            <%= torneio.nome %>
+                        </h2>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <form class="ml-1" action="/torneios/<%= torneio._id %>?_method=DELETE" method='POST'>
+                            <button class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-body">
+
+                <div class="d-flex bd-highlight">
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                        <h5 class="card-text">
+                            Início: <%= torneio.inicio %> | Final: <%= torneio.fim %>
+                        </h5>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <a class="btn btn-info mb-2" href="/torneios/jogos/<%= torneio._id %>">Jogos</a>
+                        <!-- </div> -->
+                        <!-- <div class="p-2 bd-highlight"> -->
+                        <a class="btn btn-info mb-2 ml-1" href="/torneios/<%= torneio._id %>/edit ">Editar</a>
+                        <!-- </div> -->
+                        <!-- <div class="p-2 bd-highlight"> -->
+                        <a class="btn btn-info mb-2 ml-1" href="/torneios/novoClube/<%= torneio._id %>">Novo Time</a>
+                        <!-- </div> -->
+                        <!-- <div class="p-2 bd-highlight"> -->
+
+                    </div>
+
+                </div>
+
+                <p class="card-text">
+                    <%= torneio.descricao %>
+                </p>
+
+            </div>
+        </div>
+
+        </div>
+
+        <div class="mt-4">
+            <h3>Tabela de classificação</h3>
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Time</th>
+                            <th>P</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>E</th>
+                            <th>D</th>
+                            <th>G</th>
+                            <th>G12</th>
+
+                        </tr>
+                    </thead>
+
+                    <% for (i=0; i < torneio.clubes.length ; i=i+1) { %>
+                        <tr>
+                            <th>
+                                <%= i+1 %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].nome %>
+                            </th>
+
+                            <th>
+                                <%= torneio.clubes[i].pontos %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].jogos %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].vitorias %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].empates %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].derrotas %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].gols %>
+                            </th>
+                            <th>
+                                <%= torneio.clubes[i].gols12 %>
+                            </th>
+                        </tr>
+                        <% } %>
+
+
+                </table>
+            </div>
+        </div>
+
+    </main>

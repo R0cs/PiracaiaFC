@@ -1,16 +1,41 @@
-<%- include('partials/head')%>
+<% layout('/layouts/boilerplate') %>
+    <main class="container py-3">
+        <h1>Torneios de futebol do Piracaia FC</h1>
 
-    <%- include('partials/navbar')%>
-        <div class="container">
-            <h1>Torneios de futebol do Piracaia FC</h1>
+        <a href="/torneios/novo">Criar novo torneio</a>
+        <!-- <div class="card mt-5" style="width: 18rem;">
+            <ul class="list-group list-group-flush"> -->
+        <% for(torneio of torneios) { %>
+            <div class="card" mb-3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="<%= torneio.image %> " alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5><a href="/torneios/<%= torneio.id %>">
+                                    <%= torneio.nome %>
+                                </a>
+                            </h5>
+                            <h6 class="card-text">inicio: <%= torneio.inicio %> | Final: <%= torneio.fim %>
+                            </h6>
+                            <p class="card-text">
+                                <%= torneio.descricao %>
+                            </p>
+                            <small class="text-muted"> Times: </small>
 
-            <ul>
-                <% for(torneio of torneios) { %>
-                    <li><a href="/torneios/<%= torneio.id %>/tabela">
-                            <%= torneio.nome %>
-                        </a></li>
-                    <% } %>
-            </ul>
-        </div>
 
-        <%- include('partials/footer')%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+                </ul>
+                <!-- <div class="card-footer">
+                    Card footer
+                </div> -->
+                </div>
+
+
+    </main>

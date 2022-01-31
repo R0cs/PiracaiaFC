@@ -1,0 +1,85 @@
+<% layout('/layouts/boilerplate') %>
+    <main class="container py-3">
+
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                <h2>Jogos</h2>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="btn btn-warning " href="/torneios/novoJogo/<%= torneio._id %>">Novo Jogo</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="btn btn-secondary " href="/torneios/<%= torneio._id %>">Votar</a>
+            </div>
+        </div>
+
+        <!-- <div class="card mt-5" style="width: 18rem;">
+            <ul class="list-group list-group-flush"> -->
+
+        <% console.log(torneio); %>
+            <% for(jogo of torneio.jogos) { %>
+
+                <% const time1Gols=parseInt(jogo.time1Gols, 10) + parseInt(jogo.time1Gols12, 10); %>
+                    <% const time2Gols=parseInt(jogo.time2Gols, 10) + parseInt(jogo.time2Gols12, 10); %>
+
+                        <% const C1=torneio.clubes.find(c=> c.id == jogo.time1); %>
+                            <% const C2=torneio.clubes.find(clubes=>clubes.id==jogo.time2); %>
+
+                                <!-- <div class="d-flex justify-content-around">
+
+
+                                </div> -->
+
+
+                                <div class="card mb-4" mb-3>
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <h6> Data: <%= new Intl.DateTimeFormat(['ban', 'id' ]).format(jogo.dt) %>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex align-items-center justify-content-around">
+                                        <div class=" col-2 ">
+                                            <img class="image-fluid img-thumbnail border-white" src="<%= C1.escudo %> "
+                                                alt="escudo do time 1">
+                                        </div>
+                                        <div class="col-1 ">
+                                            <h2 class="text-center">
+                                                <%= time1Gols %>
+                                            </h2>
+                                        </div>
+                                        <div class="col-2">
+                                            <img class="image-fluid img-thumbnail border-white"
+                                                src="https://media.istockphoto.com/vectors/versus-vs-word-in-pop-art-style-battle-vs-match-game-vector-vector-id1094626514?k=20&m=1094626514&s=170667a&w=0&h=csp7hQlhzh8AXfggQfm7OcVjfnI1WC3fKzQtm11_2gA="
+                                                alt="versus">
+                                        </div>
+                                        <div class="col-1">
+                                            <h2 class="text-center">
+                                                <%= time2Gols %>
+                                            </h2>
+                                        </div>
+                                        <div class="col-2">
+                                            <img class="image-fluid img-thumbnail border-white" src="<%= C2.escudo %>"
+                                                alt="escudo do time 2">
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex align-items-center   justify-content-around">
+                                        <div class="mb-3">
+                                            <h4 class="text-center">
+                                                <%= C1.nome %>
+                                            </h4>
+                                        </div>
+
+                                        <div class="mb-3 ">
+                                            <h4 class="text-center">
+                                                <%= C2.nome %>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+
+
+
+
+    </main>

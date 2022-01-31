@@ -1,0 +1,54 @@
+<% layout('/layouts/boilerplate') %>
+    <main class="container py-3">
+        <div class="col-6 offset-3">
+            <form action="/torneios" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" type="text" id="nome" name="torneios[nome]" required>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label" for="inicio">Data de início</label>
+                        <input class="form-control" type="date" id="inicio" name="torneios[inicio]" required>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label" for="fim">Data da Final</label>
+                        <input class="form-control" type="date" id="fim" name="torneios[fim]" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="descricao">Descrição</label>
+                    <textarea class="form-control" type="text" id="descricao" name="torneios[descricao]"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Imagem</label>
+                    <input class="form-control" type="text" id="image" name="torneios[image]" required>
+                </div>
+                <button class="btn btn-success ">Criar Torneio</button>
+            </form>
+            <a class="btn btn-danger mt-2" href="/torneios">Cancelar</a>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validated-form')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>

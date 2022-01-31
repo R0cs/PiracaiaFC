@@ -1,0 +1,97 @@
+<% layout('/layouts/boilerplate') %>
+
+    <main class="container py-3">
+        <div class="col-10 offset-1">
+            <form action="/torneios/novoJogo/<%= torneio.id %>" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="nome">Data</label>
+                    <input class="form-control col-3 center" type="date" id="data" name="jogos[dt]" required>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4 ">
+                        <label class="form-label" for="time1">Time da Casa</label>
+                        <select class="form-control" name="jogos[time1]" id="time1" required>
+                            <option value="">--Selecione um time--</option>
+                            <% for( let clube of torneio.clubes) { %>
+                                <option value="<%= clube._id  %>">
+                                    <%= clube.nome %>
+                                </option>
+                                <% } %>
+
+                        </select>
+                        <!-- <input class="form-control" type="text" id="time1" name="jogos[time1]" required> -->
+                    </div>
+                    <div class="col-2 text-center"><img class="image-fluid img-thumbnail border-white"
+                            src="https://media.istockphoto.com/vectors/versus-vs-word-in-pop-art-style-battle-vs-match-game-vector-vector-id1094626514?k=20&m=1094626514&s=170667a&w=0&h=csp7hQlhzh8AXfggQfm7OcVjfnI1WC3fKzQtm11_2gA="
+                            alt="versus"></div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="time2">Time Visitante</label>
+                        <select class="form-control" name="jogos[time2]" id="time2" required>
+                            <option value="">--Selecione um time--</option>
+                            <% for( let clube of torneio.clubes) { %>
+                                <option value="<%= clube._id  %>">
+                                    <%= clube.nome %>
+                                </option>
+                                <% } %>
+
+                        </select>
+                        <!-- <input class="form-control" type="text" id="time2" name="jogos[time2]" required> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="time1gols">Gols</label>
+                        <input class="form-control" type="number" id="time1gols" name="jogos[time1Gols]" placeholder=0
+                            value=0 required>
+                    </div>
+                    <div class="mb-3 col-2"><span> </span></div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="time2gols">Gols</label>
+                        <input class="form-control" type="number" id="time2gols" name="jogos[time2Gols]" placeholder=0
+                            value=0 required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+
+                        <label class="form-label" for="time1gols12">Gols do Décimo Segundo</label>
+                        <input class="form-control" type="number" id="time1gols12" name="jogos[time1Gols12]"
+                            placeholder=0 value=0 required>
+                    </div>
+                    <div class="mb-3 col-2"><span> </span></div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="time2gols12">Gols do Décimo Segundo</label>
+                        <input class="form-control" type="number" id="time2gols12" name="jogos[time2Gols12]"
+                            placeholder=0 value=0 required>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button class="btn btn-success mr-2">Salvar</button>
+                    <a class="btn btn-danger" href="/torneios/jogos/<%= torneio.id %>">Cancelar</a>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validated-form')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
