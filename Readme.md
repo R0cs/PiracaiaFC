@@ -15,3 +15,8 @@ criação da estrutura das paginas (partials)
 e criação das views
 
 repositorio publico
+
+
+31/01/2022
+Inlcusão do bd Mongo
+Criação de paginas exibição, edição e exclusão de jogos, clubes e torneios. 
